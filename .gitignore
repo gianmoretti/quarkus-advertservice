@@ -32,5 +32,9 @@ nb-configuration.xml
 build/
 bin/
 
+# Maven
+.mvn/
+target/
+
 **/*.class
 **/*.jar

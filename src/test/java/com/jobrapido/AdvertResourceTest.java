@@ -2,6 +2,8 @@ package com.jobrapido;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ public class AdvertResourceTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/hello")
+          .when().get("/advert/hello")
           .then()
              .statusCode(200)
              .body(is("hello"));
@@ -21,13 +23,11 @@ public class AdvertResourceTest {
 
     @Test
     public void testAdvertEndpoint() {
-        String advertId = "FakeAdvert";
         given()
-          .pathParam("name", advertId)
-          .when().get("/hello/advert/{name}")
+          .when().get("/advert/all")
           .then()
             .statusCode(200)
-            .body(is("Advert: " + advertId));
+            .body(is(not(nullValue())));
     }
 
 }

@@ -27,10 +27,15 @@ public class AdvertService {
     }
 
     @Transactional
-    public void createAdvert(final String body, final String title, final String company) {
+    public void createAdvert(
+        final String url, 
+        final String title, 
+        final String website, 
+        final String company) {
         final Advert newAdvert = new Advert();
         newAdvert.setTitle(title);
-        newAdvert.setBody(body);
+        newAdvert.setUrl(url);
+        newAdvert.setWebsite(website);
         newAdvert.setCompany(company);
         //em.persist(newAdvert);
         advertRepository.save(newAdvert);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -38,15 +39,15 @@ public class AdvertResource {
         return service.getAllAdverts();
     }
 
-    //@PUT
-    @GET
+    @PUT
     @Path("/create")
     public void createAdvert(
         @QueryParam String title,
-        @QueryParam String body,
+        @QueryParam String url,
+        @QueryParam String website,
         @QueryParam String company
         ) {
-        service.createAdvert(title, body, company);
+        service.createAdvert(title, url, website, company);
     }
 
 }

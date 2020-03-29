@@ -1,0 +1,12 @@
+FROM oracle/graalvm-ce:20.0.0-java8 as graalvm
+
+RUN gu install native-image
+
+# Create a volume to which we can mount to build:
+VOLUME /project
+WORKDIR /project
+
+# And finally, run native-image
+# for Gradle: ENTRYPOINT ./gradlew buildNative
+# for Maven: ENTRYPOINT ./mvnw package -Pnative
+ENTRYPOINT ./mvnw package -Pnative
